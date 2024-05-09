@@ -161,27 +161,29 @@ export default function MainPage() {
                                         {option.label}
                                       </label>
                                     </div>
-                                    <TrashIcon
-                                      className="fill-red-700 w-5 h-5 ml-2 cursor-pointer"
-                                      onClick={async () => {
-                                        await deleteCategory(
-                                          section.name,
-                                          option.value
-                                        );
-                                        setFilters(
-                                          filters.map((filter) => {
-                                            return {
-                                              ...filter,
-                                              options: filter.options.filter(
-                                                (inOption) =>
-                                                  inOption.value !==
-                                                  option.value
-                                              ),
-                                            };
-                                          })
-                                        );
-                                      }}
-                                    />
+                                    {section.name !== "Types" && (
+                                      <TrashIcon
+                                        className="fill-red-700 w-5 h-5 ml-2 cursor-pointer"
+                                        onClick={async () => {
+                                          await deleteCategory(
+                                            section.name,
+                                            option.value
+                                          );
+                                          setFilters(
+                                            filters.map((filter) => {
+                                              return {
+                                                ...filter,
+                                                options: filter.options.filter(
+                                                  (inOption) =>
+                                                    inOption.value !==
+                                                    option.value
+                                                ),
+                                              };
+                                            })
+                                          );
+                                        }}
+                                      />
+                                    )}
                                   </div>
                                 ))}
                               </div>
